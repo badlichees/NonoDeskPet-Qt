@@ -8,12 +8,14 @@ project(NonoDeskPet
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.8 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.8 REQUIRED COMPONENTS Quick WebSockets)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appnonodeskpet
     main.cpp
+    relayclient.cpp
+    relayclient.h
 )
 
 qt_add_qml_module(appnonodeskpet
@@ -24,4 +26,5 @@ qt_add_qml_module(appnonodeskpet
 
 target_link_libraries(appnonodeskpet PRIVATE
     Qt6::Quick
+    Qt6::WebSockets
 )
