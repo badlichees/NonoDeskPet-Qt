@@ -22,6 +22,7 @@ qt_add_qml_module(appnonodeskpet
     URI NonoDeskPet
     QML_FILES
         Main.qml
+        ConnectionBar.qml
 )
 
 target_link_libraries(appnonodeskpet PRIVATE

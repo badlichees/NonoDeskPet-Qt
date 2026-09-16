@@ -35,32 +35,16 @@ ApplicationWindow {
         anchors.margins: 12
         spacing: 8
 
-        RowLayout {
+        // 连接栏：地址输入 + 连接按钮 + 状态（此处作为独立组件）
+        ConnectionBar {
             Layout.fillWidth: true
-            spacing: 8
-
-            TextField {
-                id: urlField
-
-                Layout.fillWidth: true
-                text: "ws://localhost:8765"
-                placeholderText: qsTr("中继地址")
-            }
-
-            Button {
-                text: relay.connected ? qsTr("断开") : qsTr("连接")
-                onClicked: relay.connected ? relay.disconnectFromServer() : relay.connectToServer(
-                                                 urlField.text)
-            }
+            // 将Main里的id为relay的RelayClient对象注入给ConnectionBar的relay属性
+            relay: relay
         }
 
-        Label {
-            text: relay.connected ? qsTr("状态：已连接") : qsTr("状态：未连接")
-        }
-
+        // ListView负责显示日志
         ListView {
             id: logView
-
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true
