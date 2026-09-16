@@ -25,6 +25,7 @@ RelayClient::RelayClient(QObject *parent) : QObject(parent)
     // 提醒自己--Lambda表达式：
     // [ 捕获列表 ] ( 参数列表 ) -> 返回类型 { 函数体 }
     // 捕获列表决定Lambda内部可以访问哪些外部变量、怎么访问；返回类型通常可省略（自动推导）
+    // 将接收者指定为this，确保让socket连接跟随RelayClient实例的生命周期，确保对象销毁时连接自动断开同时lambda不悬空
 }
 
 void RelayClient::connectToServer(const QUrl &url)

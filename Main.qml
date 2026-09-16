@@ -6,7 +6,6 @@ import NonoDeskPet
 
 ApplicationWindow {
     id: root
-
     width: 480
     height: 640
     visible: true
@@ -17,61 +16,30 @@ ApplicationWindow {
         id: relay
     }
 
-    // 监听指定对象的信号并处理
-    Connections {
-        target: relay
-
-        function onLogReceived(line) {
-            logModel.append({
-                                "line": line
-                            });
-            logView.positionViewAtEnd();
-        }
-    }
-
     // 可内部嵌套式地排列也可同级排列，分水平和垂直，在顶端定义排列的规范
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 12
         spacing: 8
 
-        RowLayout {
+        // 连接栏：地址输入 + 连接按钮 + 状态（独立组件）
+        ConnectionBar {
             Layout.fillWidth: true
-            spacing: 8
-
-            TextField {
-                id: urlField
-
-                Layout.fillWidth: true
-                text: "ws://localhost:8765"
-                placeholderText: qsTr("中继地址")
-            }
-
-            Button {
-                text: relay.connected ? qsTr("断开") : qsTr("连接")
-                onClicked: relay.connected ? relay.disconnectFromServer() : relay.connectToServer(
-                                                 urlField.text)
-            }
+            // 将Main里的id为relay的RelayClient对象注入给ConnectionBar的relay属性
+            relay: relay
         }
 
-        Label {
-            text: relay.connected ? qsTr("状态：已连接") : qsTr("状态：未连接")
+        // 控制面板：参数输入 + 方向盘 + 进度条（独立组件）
+        ControlPad {
+            Layout.fillWidth: true
+            relay: relay
         }
 
-        ListView {
-            id: logView
-
+        // 日志面板：消息记录列表（独立组件）
+        LogPanel {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            clip: true
-            model: ListModel {
-                id: logModel
-            }
-            delegate: Label {
-                required property string line
-
-                text: line
-            }
+            relay: relay
         }
     }
 }
