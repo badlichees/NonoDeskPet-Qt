@@ -6,7 +6,6 @@ import NonoDeskPet
 
 ApplicationWindow {
     id: root
-
     width: 480
     height: 640
     visible: true
@@ -39,6 +38,12 @@ ApplicationWindow {
         ConnectionBar {
             Layout.fillWidth: true
             // 将Main里的id为relay的RelayClient对象注入给ConnectionBar的relay属性
+            relay: relay
+        }
+
+        // 控制面板：参数输入 + 方向盘 + 进度条（独立组件）
+        ControlPad {
+            Layout.fillWidth: true
             relay: relay
         }
 

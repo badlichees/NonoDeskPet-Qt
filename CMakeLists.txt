@@ -23,6 +23,7 @@ qt_add_qml_module(appnonodeskpet
     QML_FILES
         Main.qml
         ConnectionBar.qml
+        ControlPad.qml
 )
 
 target_link_libraries(appnonodeskpet PRIVATE
