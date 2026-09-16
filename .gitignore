@@ -82,6 +82,8 @@ CMakeLists.txt.user*
 .uic/
 /build*/
 /.qtcreator/
+.cmake/
+.qtc
 
 # local tooling configs (kept local, not committed)
 .clang-format
