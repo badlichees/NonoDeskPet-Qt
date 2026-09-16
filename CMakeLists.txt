@@ -24,6 +24,7 @@ qt_add_qml_module(appnonodeskpet
         Main.qml
         ConnectionBar.qml
         ControlPad.qml
+        LogPanel.qml
 )
 
 target_link_libraries(appnonodeskpet PRIVATE
