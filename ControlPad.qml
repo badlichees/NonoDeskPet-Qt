@@ -47,7 +47,7 @@ ColumnLayout {
         }
     }
 
-    // 方向盘：3×3十字布局，四个角是占位，中央是STOP
+    // 方向按键：十字布局，四个角是占位，中央是STOP
     GridLayout {
         Layout.alignment: Qt.AlignHCenter
         columns: 3
