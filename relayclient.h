@@ -11,6 +11,7 @@ class RelayClient : public QObject
     Q_OBJECT // 启用Qt的元对象系统，所有需要信号槽的类都需要这个宏
     QML_ELEMENT // 注册该类为QML类型
 
+    // 将C++类中的成员声明为Qt属性，让Qt的元对象系统认识它
     // 读取设定好的属性时，调用C++对应的成员函数
     // 格式：数据类型 属性名 关键字 成员函数 关键字 信号
     Q_PROPERTY(bool connected READ connected NOTIFY connectedChanged)

@@ -16,6 +16,10 @@ ApplicationWindow {
         id: relay
     }
 
+    BrainClient {
+        id: brain
+    }
+
     // 可内部嵌套式地排列也可同级排列，分水平和垂直，在顶端定义排列的规范
     ColumnLayout {
         anchors.fill: parent
@@ -33,6 +37,13 @@ ApplicationWindow {
         ControlPad {
             Layout.fillWidth: true
             relay: relay
+        }
+
+        // 聊天面板：大脑连接 + 对话记录 + 输入框（独立组件）
+        ChatPanel {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            brain: brain
         }
 
         // 日志面板：消息记录列表（独立组件）
