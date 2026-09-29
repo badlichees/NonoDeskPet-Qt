@@ -16,6 +16,8 @@ qt_add_executable(appnonodeskpet
     main.cpp
     relayclient.cpp
     relayclient.h
+    brainclient.cpp
+    brainclient.h
 )
 
 qt_add_qml_module(appnonodeskpet
@@ -25,6 +27,7 @@ qt_add_qml_module(appnonodeskpet
         ConnectionBar.qml
         ControlPad.qml
         LogPanel.qml
+        ChatPanel.qml
 )
 
 target_link_libraries(appnonodeskpet PRIVATE

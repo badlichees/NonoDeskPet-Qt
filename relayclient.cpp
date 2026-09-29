@@ -20,7 +20,7 @@ RelayClient::RelayClient(QObject *parent) : QObject(parent)
     connect(&m_socket, &QWebSocket::errorOccurred, this, [this](QAbstractSocket::SocketError) {
         emit logReceived(QStringLiteral("错误：%1").arg(m_socket.errorString()));
     });
-    // connect()内原型：
+    // connect()用于建立信号槽连接，其内部原型：
     // 信号发送者, 信号(函数指针), 接收者/上下文, 槽函数或可调用的对象, (可选)连接类型
     // 提醒自己--Lambda表达式：
     // [ 捕获列表 ] ( 参数列表 ) -> 返回类型 { 函数体 }
